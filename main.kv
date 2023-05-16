@@ -39,19 +39,19 @@ MDScreen:
                     adaptive_height:True
                     ElementCard:
                         image:'images/oxygen.png'
-                        price:'Oxygen Level'
+                        labels:'Oxygen Level'
                         rate:"   100"
                     ElementCard:
                         image:'images/heartrate.png'
-                        price:'Heart Rate'
+                        labels:'Heart Rate'
                         rate:"   100"
                     ElementCard:
                         image:'images/bp.png'
-                        price:'Blood Pressure'
+                        labels:'Blood Pressure'
                         rate:"   100"
                     ElementCard:
                         image:'images/temp.png'
-                        price:'Temperature'
+                        labels:'Temperature'
                         rate:"   100"
         # bottom navigation appbar
         MDBoxLayout:
@@ -77,6 +77,7 @@ MDScreen:
                 MDIconButton:
                     pos_hint:{'center_x':.5,'center_y':.5}
                     icon:'phone-alert'
+                    on_press:app.dial()
                 MDLabel:
                     text:'Emergency'
                     valign:"center"
@@ -106,7 +107,7 @@ MDScreen:
     height:dp(750)
     image:''
     rate:""
-    price:""
+    labels:""
     padding:dp(12)
     spacing:dp(6)
     RelativeLayout:
@@ -114,7 +115,7 @@ MDScreen:
             pos_hint:{"x":.05,"y":.5}
             image:root.image
             rate:root.rate
-            price:root.price
+            labels:root.labels
 
     
     MDLabel:
@@ -131,6 +132,7 @@ MDScreen:
         MDRoundFlatIconButton:
             icon:"web"
             text:"Read More"
+            on_press:app.oxygenbrowse()
             size_hint_x:1
             
 <Check@MDCheckbox>:
@@ -142,9 +144,9 @@ MDScreen:
 <ElementCard@MDCard>:
     image:''
     rate:''
-    price:""
+    labels:""
     orientation:'vertical'
-    on_release:app.show_custom_bottom_sheet(root.image,root.price,root.rate)
+    on_release:app.show_custom_bottom_sheet(root.image,root.labels,root.rate)
     size_hint_x:.5
     elevation:15
     size_hint_y:None
@@ -173,7 +175,7 @@ MDScreen:
             text:root.rate
 
     MDLabel:
-        text:root.price
+        text:root.labels
         font_style:'H6'
 
 
